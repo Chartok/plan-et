@@ -9,10 +9,9 @@ $(document).ready(function () {
     for (let i = 8; i <= 17; i++) {
         let timeSlot = day.hour(i).minute(0).second(0);
         let event = localStorage.getItem(timeSlot.format('HH:mm')) || '';
-
+        let status = '';
 
         // Loop to set past/present/future status conditional
-        let status = '';
         if (dayjs().hour() > i) {
             status = 'past';
         } else if (dayjs().hour() == i) {
@@ -39,6 +38,11 @@ $(document).ready(function () {
 
         // Store event to local storage
         localStorage.setItem(eventTime, eventDesc);
-    });
 
+        $('#modalMessage').text('Event saved for ${eventTime}')
+        $('#myModal').modal('show');
+
+
+        $(this).siblings('.savedEvent').text(eventDesc);
+    });
 });
