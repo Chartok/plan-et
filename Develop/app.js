@@ -9,10 +9,10 @@
         $('#currentDay').text(`${day.format('dddd, MMMM D, YYYY')}`);
 
         await Promise.all([...Array(10).keys()].map(async (i) => {
-            i+=8; // Offset hour to start index at 8AM
+            i += 8; // Offset hour to start index at 8AM
 
-            const timeslot = day.hour(i).minute(0).second(0);
-            let event = localStorage.getItem(timeslot.format('HH:mm')) || '';
+            const timeSlot = day.hour(i).minute(0).second(0);
+            let event = localStorage.getItem(timeSlot.format('HH:mm')) || '';
             let status = '';
 
             if (dayjs().hour() > i) {
@@ -36,13 +36,14 @@
                 </div>
                 `);
 
-            if (event && permission === 'granted') {
-                const eventTimeInMs = day.hour(i).minute(0).second(0).subtract(dayjs().hour(), 'hour').subtract(dayjs().minute(), 'minute').subtract(dayjs().second(), 'second');
-                setTimeout(() => new Notification('Calendar Event', { body: event }), eventTimeInMs);
-            }
+                if (event && permission === 'granted') {
+                    const eventTimeInMs = day.hour(i).minute(0).second(0).subtract(dayjs().hour(), 'hour').subtract(dayjs().minute(), 'minute').subtract(dayjs().second(), 'second');
+                    setTimeout(() => new Notification('Calendar Event', { body: event }), eventTimeInMs);
+                }
+
         }));
 
-        $('#calendar').on('click', '.saveEvent', async function() {
+        $('#calendar').on('click', '.saveEvent', async function () {
             const eventTime = $(this).sibling('input').attr('id');
             const eventDesc = $(this).sibling('input').val();
 
@@ -52,10 +53,8 @@
 
             $('#saveModal').modal('show');
         });
-        } catch (error) {
-            console.log(error);
-        }
-});
+    } catch (err) {
+        console.error(err);
+    }
 
-
-
+})();
