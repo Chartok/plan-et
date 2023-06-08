@@ -25,13 +25,13 @@
 
             await $('#calendar').append(`
                 <div class="row p-b-4 hourSlot ${status}">
-                <div class="col-8"><input type="text" class="lead form-control event" id="${timeSlot.format('HH:mm')}" value="${event}" /></div>
+                <div class="col-8 mt-4"><input type="textarea" class="lead form-control event" id="${timeSlot.format('HH:mm')}" value="${event}" /></div>
                 <div class="col hour">${timeSlot.format('hh:mm A')}</div>
                 <div class="col start-10%"><button class="btn btn-primary saveEvent">Save</button></div>
                 <div class="row border-bottom saved-events">
-                <div class="col m-b-3">
+                <div class="col mb-3">
                 <p><strong>Saved Event:</strong> ${event}</p>
-                <div class="col mb-5">
+                <div class="col mb-3">
                 <button class="btn btn-danger btn-sm clearEvent">Clear</button>
                 </div>
                 </div>
@@ -63,8 +63,8 @@
         });
 
         $('#calendar').on('click', '.saveEvent', async function () {
-            const eventTime = $(this).sibling('input').attr('id');
-            const eventDesc = $(this).sibling('input').val();
+            const eventTime = $(this).siblings('input').attr('id');
+            const eventDesc = $(this).siblings('input').val();
 
             localStorage.setItem(eventTime, eventDesc);
 
