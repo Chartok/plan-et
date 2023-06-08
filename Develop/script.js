@@ -5,6 +5,7 @@ $(document).ready(function () {
     // Logic to display current day
     $('#currentDay').text(day.format('dddd, MMMM D, YYYY'));
 
+
     // Loop to generate time slots from 8am - 5pm
     for (let i = 8; i <= 17; i++) {
         let timeSlot = day.hour(i).minute(0).second(0);
