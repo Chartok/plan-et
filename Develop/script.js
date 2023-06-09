@@ -25,12 +25,12 @@
 
             await $('#calendar').append(`
                 <div class="row p-b-4 hourSlot ${status}">
-                <div class="col-8 mt-4"><input type="textarea" class="form-control event" id="${timeSlot.format('HH:mm')}" value="${event}" /></div>
+                <div class="col-8 mt-4"><input type="text" class="form-control event" id="${timeSlot.format('HH:mm')}" value="${event}" /></div>
                 <div class="col hour">${timeSlot.format('hh:mm A')}</div>
                 <div class="col start-10%"><button class="btn btn-primary saveEvent">Save</button></div>
                 <div class="row border-bottom saved-events">
                 <div class="col mb-3">
-                <p><strong>Saved Event:</strong> ${ event }</p>
+                <p><strong>Saved Event:</strong> ${event}</p>
                 <div class="col mb-3">
                 <button class="btn btn-danger btn-sm clearEvent">Clear</button>
                 </div>
