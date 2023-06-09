@@ -21,7 +21,7 @@
 
   ## Usage
 
-  Open index.html in your favorite browser!
+  Open [this link](https://chartok.github.io/plan-et/) in your favorite browser!
 
   ## Contributing
 
